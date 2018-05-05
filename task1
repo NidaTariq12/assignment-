@@ -1,0 +1,30 @@
+def svalue(n,dictonary={},array=[]):
+	i=0
+	value=array[0]
+	svalue=100
+	while i<n:
+		if dictonary.get(array[i])[0]<svalue:
+			svalue=dictonary.get(array[i])[0]
+			key=array[i]
+		i=i+1
+	return value
+
+process={1:[0,2],2:[2,8],3:[3,3],4:[1,6]}
+
+n=4
+key=[1,2,3,4]
+i=0
+time=0
+while n>0:
+	t=svalue(n,process,key)
+	if i==0:
+		time=process.get(t)[0]
+		i=i+1
+	if process.get(t)[0]>time:
+		time=process.get(t)[0]
+	time=time+process.get(t)[1]
+	process.get(t).append(time-process.get(t)[0])
+	print t,'is running and its  Turn around time = ',process.get(t)[2]
+	key.remove(t)
+	n=n-1
+
